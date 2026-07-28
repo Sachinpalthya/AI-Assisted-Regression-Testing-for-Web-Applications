@@ -1,62 +1,121 @@
 {
-  "project_root": "/Users/venkey/Documents/svr/major_project/sachin/sample_project",
-  "total_files": 9,
+  "project_root": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project",
+  "total_files": 19,
   "files": [
     {
-      "relative_path": "calculator.py",
-      "absolute_path": "C:\\Users\\Lenovo\\Desktop\\Msc_project\\sachin-msc-project-2026\\sample_project\\calculator.py",
-      "language": "python",
-      "size_bytes": 2670
-    },
-    {
-      "relative_path": "string_utils.py",
-      "absolute_path": "C:\\Users\\Lenovo\\Desktop\\Msc_project\\sachin-msc-project-2026\\sample_project\\string_utils.py",
-      "language": "python",
-      "size_bytes": 3412
-    },
-    {
       "relative_path": "calculator.go",
-      "absolute_path": "/Users/venkey/Documents/svr/major_project/sachin/sample_project/calculator.go",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\calculator.go",
       "language": "go",
       "size_bytes": 1228
     },
     {
-      "relative_path": "calculator.py",
-      "absolute_path": "/Users/venkey/Documents/svr/major_project/sachin/sample_project/calculator.py",
-      "language": "python",
-      "size_bytes": 7245
-    },
-    {
       "relative_path": "Calculator.java",
-      "absolute_path": "/Users/venkey/Documents/svr/major_project/sachin/sample_project/Calculator.java",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\Calculator.java",
       "language": "java",
       "size_bytes": 1610
     },
     {
       "relative_path": "calculator.js",
-      "absolute_path": "/Users/venkey/Documents/svr/major_project/sachin/sample_project/calculator.js",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\calculator.js",
       "language": "javascript",
       "size_bytes": 1396
     },
     {
-      "relative_path": "output/generated_tests/test_user_manager_py.py",
-      "absolute_path": "/Users/venkey/Documents/svr/major_project/sachin/sample_project/output/generated_tests/test_user_manager_py.py",
+      "relative_path": "calculator.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\calculator.py",
       "language": "python",
-      "size_bytes": 4530
+      "size_bytes": 2670
+    },
+    {
+      "relative_path": "string_utils.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\string_utils.py",
+      "language": "python",
+      "size_bytes": 3412
+    },
+    {
+      "relative_path": "user_manager.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\user_manager.py",
+      "language": "python",
+      "size_bytes": 7245
+    },
+    {
+      "relative_path": "output\\generated_tests\\test_calculator_py.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\test_calculator_py.py",
+      "language": "python",
+      "size_bytes": 5298
+    },
+    {
+      "relative_path": "output\\generated_tests\\test_output_generated_tests_test_calculator_py_py.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\test_output_generated_tests_test_calculator_py_py.py",
+      "language": "python",
+      "size_bytes": 3181
+    },
+    {
+      "relative_path": "output\\generated_tests\\test_output_generated_tests_test_string_utils_py_py.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\test_output_generated_tests_test_string_utils_py_py.py",
+      "language": "python",
+      "size_bytes": 2625
+    },
+    {
+      "relative_path": "output\\generated_tests\\test_output_generated_tests_test_user_manager_py_py.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\test_output_generated_tests_test_user_manager_py_py.py",
+      "language": "python",
+      "size_bytes": 3039
     },
     {
       "relative_path": "output\\generated_tests\\test_string_utils_py.py",
-      "absolute_path": "C:\\Users\\Lenovo\\Desktop\\Msc_project\\sachin-msc-project-2026\\sample_project\\output\\generated_tests\\test_string_utils_py.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\test_string_utils_py.py",
       "language": "python",
-      "size_bytes": 3075
-      "size_bytes": 3075
+      "size_bytes": 7369
     },
     {
       "relative_path": "output\\generated_tests\\test_user_manager_py.py",
-      "absolute_path": "C:\\Users\\Lenovo\\Desktop\\Msc_project\\sachin-msc-project-2026\\sample_project\\output\\generated_tests\\test_user_manager_py.py",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\test_user_manager_py.py",
       "language": "python",
-      "size_bytes": 4066
+      "size_bytes": 5738
+    },
+    {
+      "relative_path": "output\\generated_tests\\go\\calculator.go",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\go\\calculator.go",
+      "language": "go",
+      "size_bytes": 1228
+    },
+    {
+      "relative_path": "output\\generated_tests\\go\\calculator_test.go",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\go\\calculator_test.go",
+      "language": "go",
+      "size_bytes": 3346
+    },
+    {
+      "relative_path": "output\\generated_tests\\java\\Calculator.java",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\java\\Calculator.java",
+      "language": "java",
+      "size_bytes": 1610
+    },
+    {
+      "relative_path": "output\\generated_tests\\java\\CalculatorTest.java",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\java\\CalculatorTest.java",
+      "language": "java",
+      "size_bytes": 3762
+    },
+    {
+      "relative_path": "output\\generated_tests\\js\\calculator.js",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\js\\calculator.js",
+      "language": "javascript",
+      "size_bytes": 1396
+    },
+    {
+      "relative_path": "output\\generated_tests\\js\\calculator.test.js",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\js\\calculator.test.js",
+      "language": "javascript",
+      "size_bytes": 3657
+    },
+    {
+      "relative_path": "output\\generated_tests\\js\\jest.config.js",
+      "absolute_path": "C:\\Users\\Lenovo\\Documents\\sachin-msc-project-2026-main\\sample_project\\output\\generated_tests\\js\\jest.config.js",
+      "language": "javascript",
+      "size_bytes": 75
     }
   ],
-  "summary": "This project appears to be a multi-component, cross-platform application with several distinct functional modules. A primary component is dedicated to user management (`user_manager.py`), suggesting functionality related to authentication, profiles, or user lifecycle handling. Another utility module, `string_utils.py`, indicates the inclusion of general helper functions focused specifically on text and string manipulation within Python.\n\nThe most notable structural element is the implementation of a calculator feature across multiple programming languages: Go (`calculator.go`), Java (`Calculator.java`), JavaScript (`calculator.js`), and Python (`calculator.py`). This suggests that while the application has core logic (user management, string handling), its mathematical calculation functionality is designed to be accessible or portable across various technology stacks or client-side environments."
+  "summary": "The given codebase comprises multiple implementations of calculator functionality across different programming languages including Go (golang), Java, JavaScript, and Python; with each language having a dedicated file for the `calculator` component: calculator.go in Golang, Calculator.java in Java, calculator.js in JavaScript, and calculator.py in Python - suggesting that this project has developed portable mathematical or arithmetic operations across various platforms to cater to diverse user requirements.\n\nAdditionally, the codebase contains a substantial amount of utility functions for strings (`string_utils`) as well as `user_manager`, which indicates there's functionality aimed at handling input/output processing and potentially managing users within an application or service that requires such operations; given their file size differences, one can infer complexity in the respective components. The large sized python files related to testing (`test_*`) imply a robust test suite has been created for each of these calculator implementations (and likely other parts), ensuring reliability and consistency across different language versions \u2013 pointing towards an endeavor focused on delivering quality software that operates smoothly in multiple environments.\n\nThis project seems like it could be part of cross-platform application or service, possibly related to data processing where arithmetic operations are frequent, string manipulation is necessary for input/output handling and user management plays a role - all across Go, Java, JavaScript, Python ecosystems with dedicated testing suites in place. The inclusion of test files generated through code coverage tools (evident from the naming pattern `test_*.py` as well) suggests an emphasis on maintainability and quality assurance throughout development stages to meet industry standards for reliable software systems across various computing platforms and languages."
 }
