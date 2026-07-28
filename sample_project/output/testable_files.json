@@ -1,0 +1,10 @@
+{
+  "testable_files": [
+    "user_manager.py",
+    "string_utils.py",
+    "calculator.go",
+    "calculator.py",
+    "Calculator.java",
+    "calculator.js"
+  ]
+}

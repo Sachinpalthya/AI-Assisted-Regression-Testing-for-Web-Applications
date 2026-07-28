@@ -1,0 +1,488 @@
+{
+  "summary": {
+    "total": 53,
+    "passed": 43,
+    "failed": 10,
+    "errors": 0
+  },
+  "tests": [
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_arithmetic_operations_and_history",
+      "name": "test_arithmetic_operations_and_history",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_division_by_zero_raises_valueerror",
+      "name": "test_division_by_zero_raises_valueerror",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_percentage_error_handling[50.0-0.0-ValueError]",
+      "name": "test_percentage_error_handling[50.0-0.0-ValueError]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_percentage_error_handling[a-10.0-TypeError]",
+      "name": "test_percentage_error_handling[a-10.0-TypeError]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_percentage_error_handling[50.0-None-TypeError]",
+      "name": "test_percentage_error_handling[50.0-None-TypeError]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_percentage_error_handling[None-10.0-TypeError]",
+      "name": "test_percentage_error_handling[None-10.0-TypeError]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_percentage_valid_case",
+      "name": "test_percentage_valid_case",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[2-True]",
+      "name": "test_is_prime_valid_integers[2-True]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[3-True]",
+      "name": "test_is_prime_valid_integers[3-True]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[17-True]",
+      "name": "test_is_prime_valid_integers[17-True]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[4-False]",
+      "name": "test_is_prime_valid_integers[4-False]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[9-False]",
+      "name": "test_is_prime_valid_integers[9-False]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[0-False]",
+      "name": "test_is_prime_valid_integers[0-False]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[1-False]",
+      "name": "test_is_prime_valid_integers[1-False]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[-5-False]",
+      "name": "test_is_prime_valid_integers[-5-False]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[-1.0]",
+      "name": "test_is_prime_type_checking[-1.0]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[3.14]",
+      "name": "test_is_prime_type_checking[3.14]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[abc]",
+      "name": "test_is_prime_type_checking[abc]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[None]",
+      "name": "test_is_prime_type_checking[None]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_calculator_py.py::test_is_prime_complex_type_checking[value0-TypeError]",
+      "name": "test_is_prime_complex_type_checking[value0-TypeError]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "calculator.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[reverse_string-non_str_input0]",
+      "name": "test_type_errors_in_core_functions[reverse_string-non_str_input0]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[count_words-123]",
+      "name": "test_type_errors_in_core_functions[count_words-123]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[reverse_string-None]",
+      "name": "test_type_errors_in_core_functions[reverse_string-None]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_truncate_value_errors[A long text-2]",
+      "name": "test_truncate_value_errors[A long text-2]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_truncate_value_errors[Test--1]",
+      "name": "test_truncate_value_errors[Test--1]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_reverse_happy_path",
+      "name": "test_reverse_happy_path",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_reverse_empty_edge_case",
+      "name": "test_reverse_empty_edge_case",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[-0]",
+      "name": "test_count_words_edge_cases[-0]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[   \\t -0]",
+      "name": "test_count_words_edge_cases[   \\t -0]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "t -0]",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[one two three-3]",
+      "name": "test_count_words_edge_cases[one two three-3]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[Multiple   spaces  here-3]",
+      "name": "test_count_words_edge_cases[Multiple   spaces  here-3]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[Hello world!-3-Hello-world]",
+      "name": "test_truncate_functionality[Hello world!-3-Hello-world]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[This text is very long and needs shortening-5-This...]",
+      "name": "test_truncate_functionality[This text is very long and needs shortening-5-This...]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[Short-10-Short]",
+      "name": "test_truncate_functionality[Short-10-Short]",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_extract_emails_mixed_data",
+      "name": "test_extract_emails_mixed_data",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_slug_conversion_mixed_data",
+      "name": "test_slug_conversion_mixed_data",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_is_palindrome_mixed_data",
+      "name": "test_is_palindrome_mixed_data",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": ""
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_standard",
+      "name": "test_title_case_standard",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": "output/generated_tests/test_string_utils_py.py:139: in test_title_case_standard\n    assert title_case(\"a quick brown fox\") == \"Quick Brown Fox\"\nE   AssertionError: assert 'A Quick Brown Fox' == 'Quick Brown Fox'\nE     \nE     - Quick Brown Fox\nE     + A Quick Brown Fox\nE     ? ++"
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]",
+      "name": "test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": "output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'The Dog and ... by the River' == 'Dog And The ... By The River'\nE     \nE     - Dog And The Cat Ran By The River\nE     ?     ^   ^           ^  ^\nE     + The Dog and the Cat Ran by the River\nE     ? ++++    ^   ^           ^  ^"
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]",
+      "name": "test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": "output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'An Apple to Eat With a Fork' == 'Apple To Eat With A Fork'\nE     \nE     - Apple To Eat With A Fork\nE     ?       ^           ^\nE     + An Apple to Eat With a Fork\nE     ? +++      ^           ^"
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]",
+      "name": "test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": "output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'A Test for and but or or Us' == 'Test For And But Or Us'\nE     \nE     - Test For And But Or Us\nE     + A Test for and but or or Us"
+    },
+    {
+      "node_id": "output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]",
+      "name": "test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "string_utils.py",
+      "language": "python",
+      "error": "output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'The Cat Sat on an Mat' == 'The Cat Sat On An Mat'\nE     \nE     - The Cat Sat On An Mat\nE     ?             ^  ^\nE     + The Cat Sat on an Mat\nE     ?             ^  ^"
+    },
+    {
+      "node_id": "output/generated_tests/test_user_manager_py.py::test_role_access_control",
+      "name": "test_role_access_control",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "user_manager.py",
+      "language": "python",
+      "error": "output/generated_tests/test_user_manager_py.py:35: in test_role_access_control\n    admin = get_user(\"admin\")\n            ^^^^^^^^^^^^^^^^^\noutput/generated_tests/test_user_manager_py.py:29: in get_user\n    return User(id=id, username=f\"u{id}\", email=f\"{role}@test.com\", role=role)\n           ^^^^\nE   NameError: name 'User' is not defined"
+    },
+    {
+      "node_id": "output/generated_tests/test_user_manager_py.py::test_create_user_validation_failures",
+      "name": "test_create_user_validation_failures",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "user_manager.py",
+      "language": "python",
+      "error": "output/generated_tests/test_user_manager_py.py:92: in test_create_user_validation_failures\n    with pytest.raises(UserValidationError, match=\"Username 'testuser' is already taken\"):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Regex pattern did not match.\nE     Expected regex: \"Username 'testuser' is already taken\"\nE     Actual message: \"Username 'TESTUSER' is already taken\""
+    },
+    {
+      "node_id": "output/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle",
+      "name": "test_full_crud_lifecycle",
+      "outcome": "failed",
+      "duration": 0,
+      "source_file": "user_manager.py",
+      "language": "python",
+      "error": "output/generated_tests/test_user_manager_py.py:125: in test_full_crud_lifecycle\n    retrieved_user = manager.get_user(test_username)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nuser_manager.py:126: in get_user\n    raise UserNotFoundError(f\"No user with ID {user_id}\")\nE   user_manager.UserNotFoundError: No user with ID cruduser"
+    },
+    {
+      "node_id": "TestBasicArithmeticOperations",
+      "name": "TestBasicArithmeticOperations",
+      "outcome": "failed",
+      "duration": 0.0,
+      "source_file": "",
+      "language": "go",
+      "error": ""
+    },
+    {
+      "node_id": "TestDivideByZero",
+      "name": "TestDivideByZero",
+      "outcome": "passed",
+      "duration": 0.0,
+      "source_file": "",
+      "language": "go",
+      "error": ""
+    },
+    {
+      "node_id": "TestFactorialNegativeInput",
+      "name": "TestFactorialNegativeInput",
+      "outcome": "passed",
+      "duration": 0.0,
+      "source_file": "",
+      "language": "go",
+      "error": ""
+    },
+    {
+      "node_id": "TestClampFunctionality",
+      "name": "TestClampFunctionality",
+      "outcome": "failed",
+      "duration": 0.0,
+      "source_file": "",
+      "language": "go",
+      "error": ""
+    },
+    {
+      "node_id": "java_test_0",
+      "name": "java_test_0",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "",
+      "language": "java",
+      "error": ""
+    },
+    {
+      "node_id": "java_test_1",
+      "name": "java_test_1",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "",
+      "language": "java",
+      "error": ""
+    },
+    {
+      "node_id": "java_test_2",
+      "name": "java_test_2",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "",
+      "language": "java",
+      "error": ""
+    },
+    {
+      "node_id": "java_test_3",
+      "name": "java_test_3",
+      "outcome": "passed",
+      "duration": 0,
+      "source_file": "",
+      "language": "java",
+      "error": ""
+    }
+  ],
+  "raw_output": "=== Python (pytest) ===\n============================= test session starts ==============================\ncollecting ... collected 45 items\n\noutput/generated_tests/test_calculator_py.py::test_arithmetic_operations_and_history PASSED [  2%]\noutput/generated_tests/test_calculator_py.py::test_division_by_zero_raises_valueerror PASSED [  4%]\noutput/generated_tests/test_calculator_py.py::test_percentage_error_handling[50.0-0.0-ValueError] PASSED [  6%]\noutput/generated_tests/test_calculator_py.py::test_percentage_error_handling[a-10.0-TypeError] PASSED [  8%]\noutput/generated_tests/test_calculator_py.py::test_percentage_error_handling[50.0-None-TypeError] PASSED [ 11%]\noutput/generated_tests/test_calculator_py.py::test_percentage_error_handling[None-10.0-TypeError] PASSED [ 13%]\noutput/generated_tests/test_calculator_py.py::test_percentage_valid_case PASSED [ 15%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[2-True] PASSED [ 17%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[3-True] PASSED [ 20%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[17-True] PASSED [ 22%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[4-False] PASSED [ 24%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[9-False] PASSED [ 26%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[0-False] PASSED [ 28%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[1-False] PASSED [ 31%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[-5-False] PASSED [ 33%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_type_checking[-1.0] PASSED [ 35%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_type_checking[3.14] PASSED [ 37%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_type_checking[abc] PASSED [ 40%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_type_checking[None] PASSED [ 42%]\noutput/generated_tests/test_calculator_py.py::test_is_prime_complex_type_checking[value0-TypeError] PASSED [ 44%]\noutput/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[reverse_string-non_str_input0] PASSED [ 46%]\noutput/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[count_words-123] PASSED [ 48%]\noutput/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[reverse_string-None] PASSED [ 51%]\noutput/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_truncate_value_errors[A long text-2] PASSED [ 53%]\noutput/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_truncate_value_errors[Test--1] PASSED [ 55%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_reverse_happy_path PASSED [ 57%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_reverse_empty_edge_case PASSED [ 60%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[-0] PASSED [ 62%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[   \\t -0] PASSED [ 64%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[one two three-3] PASSED [ 66%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[Multiple   spaces  here-3] PASSED [ 68%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[Hello world!-3-Hello-world] PASSED [ 71%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[This text is very long and needs shortening-5-This...] PASSED [ 73%]\noutput/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[Short-10-Short] PASSED [ 75%]\noutput/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_extract_emails_mixed_data PASSED [ 77%]\noutput/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_slug_conversion_mixed_data PASSED [ 80%]\noutput/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_is_palindrome_mixed_data PASSED [ 82%]\noutput/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_standard FAILED [ 84%]\noutput/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River] FAILED [ 86%]\noutput/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork] FAILED [ 88%]\noutput/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us] FAILED [ 91%]\noutput/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat] FAILED [ 93%]\noutput/generated_tests/test_user_manager_py.py::test_role_access_control FAILED [ 95%]\noutput/generated_tests/test_user_manager_py.py::test_create_user_validation_failures FAILED [ 97%]\noutput/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle FAILED [100%]\n\n=================================== FAILURES ===================================\n___________ TestAlgorithmicFormattingRules.test_title_case_standard ____________\noutput/generated_tests/test_string_utils_py.py:139: in test_title_case_standard\n    assert title_case(\"a quick brown fox\") == \"Quick Brown Fox\"\nE   AssertionError: assert 'A Quick Brown Fox' == 'Quick Brown Fox'\nE     \nE     - Quick Brown Fox\nE     + A Quick Brown Fox\nE     ? ++\n_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River] _\noutput/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'The Dog and ... by the River' == 'Dog And The ... By The River'\nE     \nE     - Dog And The Cat Ran By The River\nE     ?     ^   ^           ^  ^\nE     + The Dog and the Cat Ran by the River\nE     ? ++++    ^   ^           ^  ^\n_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork] _\noutput/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'An Apple to Eat With a Fork' == 'Apple To Eat With A Fork'\nE     \nE     - Apple To Eat With A Fork\nE     ?       ^           ^\nE     + An Apple to Eat With a Fork\nE     ? +++      ^           ^\n_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us] _\noutput/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'A Test for and but or or Us' == 'Test For And But Or Us'\nE     \nE     - Test For And But Or Us\nE     + A Test for and but or or Us\n_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat] _\noutput/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'The Cat Sat on an Mat' == 'The Cat Sat On An Mat'\nE     \nE     - The Cat Sat On An Mat\nE     ?             ^  ^\nE     + The Cat Sat on an Mat\nE     ?             ^  ^\n___________________________ test_role_access_control ___________________________\noutput/generated_tests/test_user_manager_py.py:35: in test_role_access_control\n    admin = get_user(\"admin\")\n            ^^^^^^^^^^^^^^^^^\noutput/generated_tests/test_user_manager_py.py:29: in get_user\n    return User(id=id, username=f\"u{id}\", email=f\"{role}@test.com\", role=role)\n           ^^^^\nE   NameError: name 'User' is not defined\n_____________________ test_create_user_validation_failures _____________________\noutput/generated_tests/test_user_manager_py.py:92: in test_create_user_validation_failures\n    with pytest.raises(UserValidationError, match=\"Username 'testuser' is already taken\"):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE   AssertionError: Regex pattern did not match.\nE     Expected regex: \"Username 'testuser' is already taken\"\nE     Actual message: \"Username 'TESTUSER' is already taken\"\n___________________________ test_full_crud_lifecycle ___________________________\noutput/generated_tests/test_user_manager_py.py:125: in test_full_crud_lifecycle\n    retrieved_user = manager.get_user(test_username)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nuser_manager.py:126: in get_user\n    raise UserNotFoundError(f\"No user with ID {user_id}\")\nE   user_manager.UserNotFoundError: No user with ID cruduser\n=============================== warnings summary ===============================\noutput/generated_tests/test_user_manager_py.py::test_create_user_validation_failures\noutput/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle\n  /Users/venkey/Documents/svr/major_project/sachin/sample_project/user_manager.py:40: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).\n    self.created_at = datetime.utcnow()\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n--------------------------------- JSON report ----------------------------------\nreport saved to: /Users/venkey/Documents/svr/major_project/sachin/sample_project/output/pytest_report.json\n=========================== short test summary info ============================\nFAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_standard\nFAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]\nFAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]\nFAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]\nFAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]\nFAILED output/generated_tests/test_user_manager_py.py::test_role_access_control\nFAILED output/generated_tests/test_user_manager_py.py::test_create_user_validation_failures\nFAILED output/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle\n=================== 8 failed, 37 passed, 2 warnings in 0.07s ===================\n\n\n=== JavaScript (Jest) ===\nJest timed out after 120s\n\n=== Go (go test) ===\n=== RUN   TestBasicArithmeticOperations\n    calculator_test.go:25: Subtract: Expected 2, got 3\n--- FAIL: TestBasicArithmeticOperations (0.00s)\n=== RUN   TestDivideByZero\n--- PASS: TestDivideByZero (0.00s)\n=== RUN   TestFactorialNegativeInput\n--- PASS: TestFactorialNegativeInput (0.00s)\n=== RUN   TestClampFunctionality\n=== RUN   TestClampFunctionality/Within_Range\n=== RUN   TestClampFunctionality/Below_Min_Boundary\n    calculator_test.go:113: Clamp(-3, -5, 10): Expected -5, got -3\n=== RUN   TestClampFunctionality/Above_Max_Boundary\n=== RUN   TestClampFunctionality/Invalid_Range_Check\n--- FAIL: TestClampFunctionality (0.00s)\n    --- PASS: TestClampFunctionality/Within_Range (0.00s)\n    --- FAIL: TestClampFunctionality/Below_Min_Boundary (0.00s)\n    --- PASS: TestClampFunctionality/Above_Max_Boundary (0.00s)\n    --- PASS: TestClampFunctionality/Invalid_Range_Check (0.00s)\nFAIL\nFAIL\tgenerated_tests\t0.698s\nFAIL\n\n\n=== Java (JUnit 5) ===\n\n\u001b[36m\u2577\u001b[0m\n\u001b[36m\u251c\u2500\u001b[0m \u001b[36mJUnit Jupiter\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u2502  \u2514\u2500\u001b[0m \u001b[36mCalculatorTest\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u2502     \u251c\u2500\u001b[0m \u001b[34mtestClampFunction()\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u2502     \u251c\u2500\u001b[0m \u001b[34mtestDivisionByZeroThrowsArithmeticException()\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u2502     \u251c\u2500\u001b[0m \u001b[34mtestBasicArithmeticOperations()\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u2502     \u2514\u2500\u001b[0m \u001b[34mtestFactorialBoundaryAndNegativeInput()\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u251c\u2500\u001b[0m \u001b[36mJUnit Vintage\u001b[0m \u001b[32m\u2714\u001b[0m\n\u001b[36m\u2514\u2500\u001b[0m \u001b[36mJUnit Platform Suite\u001b[0m \u001b[32m\u2714\u001b[0m\n\nTest run finished after 28 ms\n[         4 containers found      ]\n[         0 containers skipped    ]\n[         4 containers started    ]\n[         0 containers aborted    ]\n[         4 containers successful ]\n[         0 containers failed     ]\n[         4 tests found           ]\n[         0 tests skipped         ]\n[         4 tests started         ]\n[         0 tests aborted         ]\n[         4 tests successful      ]\n[         0 tests failed          ]\n\n\nWARNING: Delegated to the 'execute' command.\n         This behaviour has been deprecated and will be removed in a future release.\n         Please use the 'execute' command directly.\n"
+}

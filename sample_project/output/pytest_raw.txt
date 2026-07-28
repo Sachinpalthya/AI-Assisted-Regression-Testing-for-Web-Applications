@@ -1,0 +1,193 @@
+=== Python (pytest) ===
+============================= test session starts ==============================
+collecting ... collected 45 items
+
+output/generated_tests/test_calculator_py.py::test_arithmetic_operations_and_history PASSED [  2%]
+output/generated_tests/test_calculator_py.py::test_division_by_zero_raises_valueerror PASSED [  4%]
+output/generated_tests/test_calculator_py.py::test_percentage_error_handling[50.0-0.0-ValueError] PASSED [  6%]
+output/generated_tests/test_calculator_py.py::test_percentage_error_handling[a-10.0-TypeError] PASSED [  8%]
+output/generated_tests/test_calculator_py.py::test_percentage_error_handling[50.0-None-TypeError] PASSED [ 11%]
+output/generated_tests/test_calculator_py.py::test_percentage_error_handling[None-10.0-TypeError] PASSED [ 13%]
+output/generated_tests/test_calculator_py.py::test_percentage_valid_case PASSED [ 15%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[2-True] PASSED [ 17%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[3-True] PASSED [ 20%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[17-True] PASSED [ 22%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[4-False] PASSED [ 24%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[9-False] PASSED [ 26%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[0-False] PASSED [ 28%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[1-False] PASSED [ 31%]
+output/generated_tests/test_calculator_py.py::test_is_prime_valid_integers[-5-False] PASSED [ 33%]
+output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[-1.0] PASSED [ 35%]
+output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[3.14] PASSED [ 37%]
+output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[abc] PASSED [ 40%]
+output/generated_tests/test_calculator_py.py::test_is_prime_type_checking[None] PASSED [ 42%]
+output/generated_tests/test_calculator_py.py::test_is_prime_complex_type_checking[value0-TypeError] PASSED [ 44%]
+output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[reverse_string-non_str_input0] PASSED [ 46%]
+output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[count_words-123] PASSED [ 48%]
+output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_type_errors_in_core_functions[reverse_string-None] PASSED [ 51%]
+output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_truncate_value_errors[A long text-2] PASSED [ 53%]
+output/generated_tests/test_string_utils_py.py::TestInputValidationAndErrors::test_truncate_value_errors[Test--1] PASSED [ 55%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_reverse_happy_path PASSED [ 57%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_reverse_empty_edge_case PASSED [ 60%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[-0] PASSED [ 62%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[   \t -0] PASSED [ 64%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[one two three-3] PASSED [ 66%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_count_words_edge_cases[Multiple   spaces  here-3] PASSED [ 68%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[Hello world!-3-Hello-world] PASSED [ 71%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[This text is very long and needs shortening-5-This...] PASSED [ 73%]
+output/generated_tests/test_string_utils_py.py::TestCoreStringTransformations::test_truncate_functionality[Short-10-Short] PASSED [ 75%]
+output/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_extract_emails_mixed_data PASSED [ 77%]
+output/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_slug_conversion_mixed_data PASSED [ 80%]
+output/generated_tests/test_string_utils_py.py::TestContentExtractionAndSlugify::test_is_palindrome_mixed_data PASSED [ 82%]
+output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_standard FAILED [ 84%]
+output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River] FAILED [ 86%]
+output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork] FAILED [ 88%]
+output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us] FAILED [ 91%]
+output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat] FAILED [ 93%]
+output/generated_tests/test_user_manager_py.py::test_role_access_control FAILED [ 95%]
+output/generated_tests/test_user_manager_py.py::test_create_user_validation_failures FAILED [ 97%]
+output/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle FAILED [100%]
+
+=================================== FAILURES ===================================
+___________ TestAlgorithmicFormattingRules.test_title_case_standard ____________
+output/generated_tests/test_string_utils_py.py:139: in test_title_case_standard
+    assert title_case("a quick brown fox") == "Quick Brown Fox"
+E   AssertionError: assert 'A Quick Brown Fox' == 'Quick Brown Fox'
+E     
+E     - Quick Brown Fox
+E     + A Quick Brown Fox
+E     ? ++
+_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River] _
+output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert 'The Dog and ... by the River' == 'Dog And The ... By The River'
+E     
+E     - Dog And The Cat Ran By The River
+E     ?     ^   ^           ^  ^
+E     + The Dog and the Cat Ran by the River
+E     ? ++++    ^   ^           ^  ^
+_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork] _
+output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert 'An Apple to Eat With a Fork' == 'Apple To Eat With A Fork'
+E     
+E     - Apple To Eat With A Fork
+E     ?       ^           ^
+E     + An Apple to Eat With a Fork
+E     ? +++      ^           ^
+_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us] _
+output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert 'A Test for and but or or Us' == 'Test For And But Or Us'
+E     
+E     - Test For And But Or Us
+E     + A Test for and but or or Us
+_ TestAlgorithmicFormattingRules.test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat] _
+output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert 'The Cat Sat on an Mat' == 'The Cat Sat On An Mat'
+E     
+E     - The Cat Sat On An Mat
+E     ?             ^  ^
+E     + The Cat Sat on an Mat
+E     ?             ^  ^
+___________________________ test_role_access_control ___________________________
+output/generated_tests/test_user_manager_py.py:35: in test_role_access_control
+    admin = get_user("admin")
+            ^^^^^^^^^^^^^^^^^
+output/generated_tests/test_user_manager_py.py:29: in get_user
+    return User(id=id, username=f"u{id}", email=f"{role}@test.com", role=role)
+           ^^^^
+E   NameError: name 'User' is not defined
+_____________________ test_create_user_validation_failures _____________________
+output/generated_tests/test_user_manager_py.py:92: in test_create_user_validation_failures
+    with pytest.raises(UserValidationError, match="Username 'testuser' is already taken"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: "Username 'testuser' is already taken"
+E     Actual message: "Username 'TESTUSER' is already taken"
+___________________________ test_full_crud_lifecycle ___________________________
+output/generated_tests/test_user_manager_py.py:125: in test_full_crud_lifecycle
+    retrieved_user = manager.get_user(test_username)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+user_manager.py:126: in get_user
+    raise UserNotFoundError(f"No user with ID {user_id}")
+E   user_manager.UserNotFoundError: No user with ID cruduser
+=============================== warnings summary ===============================
+output/generated_tests/test_user_manager_py.py::test_create_user_validation_failures
+output/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle
+  /Users/venkey/Documents/svr/major_project/sachin/sample_project/user_manager.py:40: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    self.created_at = datetime.utcnow()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+--------------------------------- JSON report ----------------------------------
+report saved to: /Users/venkey/Documents/svr/major_project/sachin/sample_project/output/pytest_report.json
+=========================== short test summary info ============================
+FAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_standard
+FAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]
+FAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]
+FAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]
+FAILED output/generated_tests/test_string_utils_py.py::TestAlgorithmicFormattingRules::test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]
+FAILED output/generated_tests/test_user_manager_py.py::test_role_access_control
+FAILED output/generated_tests/test_user_manager_py.py::test_create_user_validation_failures
+FAILED output/generated_tests/test_user_manager_py.py::test_full_crud_lifecycle
+=================== 8 failed, 37 passed, 2 warnings in 0.07s ===================
+
+
+=== JavaScript (Jest) ===
+Jest timed out after 120s
+
+=== Go (go test) ===
+=== RUN   TestBasicArithmeticOperations
+    calculator_test.go:25: Subtract: Expected 2, got 3
+--- FAIL: TestBasicArithmeticOperations (0.00s)
+=== RUN   TestDivideByZero
+--- PASS: TestDivideByZero (0.00s)
+=== RUN   TestFactorialNegativeInput
+--- PASS: TestFactorialNegativeInput (0.00s)
+=== RUN   TestClampFunctionality
+=== RUN   TestClampFunctionality/Within_Range
+=== RUN   TestClampFunctionality/Below_Min_Boundary
+    calculator_test.go:113: Clamp(-3, -5, 10): Expected -5, got -3
+=== RUN   TestClampFunctionality/Above_Max_Boundary
+=== RUN   TestClampFunctionality/Invalid_Range_Check
+--- FAIL: TestClampFunctionality (0.00s)
+    --- PASS: TestClampFunctionality/Within_Range (0.00s)
+    --- FAIL: TestClampFunctionality/Below_Min_Boundary (0.00s)
+    --- PASS: TestClampFunctionality/Above_Max_Boundary (0.00s)
+    --- PASS: TestClampFunctionality/Invalid_Range_Check (0.00s)
+FAIL
+FAIL	generated_tests	0.698s
+FAIL
+
+
+=== Java (JUnit 5) ===
+
+[36m╷[0m
+[36m├─[0m [36mJUnit Jupiter[0m [32m✔[0m
+[36m│  └─[0m [36mCalculatorTest[0m [32m✔[0m
+[36m│     ├─[0m [34mtestClampFunction()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestDivisionByZeroThrowsArithmeticException()[0m [32m✔[0m
+[36m│     ├─[0m [34mtestBasicArithmeticOperations()[0m [32m✔[0m
+[36m│     └─[0m [34mtestFactorialBoundaryAndNegativeInput()[0m [32m✔[0m
+[36m├─[0m [36mJUnit Vintage[0m [32m✔[0m
+[36m└─[0m [36mJUnit Platform Suite[0m [32m✔[0m
+
+Test run finished after 28 ms
+[         4 containers found      ]
+[         0 containers skipped    ]
+[         4 containers started    ]
+[         0 containers aborted    ]
+[         4 containers successful ]
+[         0 containers failed     ]
+[         4 tests found           ]
+[         0 tests skipped         ]
+[         4 tests started         ]
+[         0 tests aborted         ]
+[         4 tests successful      ]
+[         0 tests failed          ]
+
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.

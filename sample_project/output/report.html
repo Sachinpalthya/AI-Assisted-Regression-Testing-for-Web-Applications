@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Regression Test Report</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d2e; --card: #212438;
+    --border: #2e3250; --accent: #7c6af7; --accent2: #56cfb2;
+    --pass: #4ade80; --fail: #f87171; --warn: #fbbf24;
+    --text: #e2e8f0; --muted: #8892b0; --code-bg: #0d1117;
+    --font: 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #1a1d2e 0%, #212438 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .header-icon { font-size: 2.5rem; }
+  .header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px; }
+  .header h1 span { color: var(--accent); }
+  .header-meta { margin-left: auto; text-align: right; color: var(--muted); font-size: 0.8rem; }
+  .header-meta strong { display: block; color: var(--text); font-size: 1rem; }
+
+  /* ── Layout ── */
+  .container { max-width: 1300px; margin: 0 auto; padding: 2rem 2.5rem; }
+
+  /* ── Stats Bar ── */
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+    display: flex; flex-direction: column; gap: 0.4rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  .stat-value { font-size: 2rem; font-weight: 800; }
+  .stat-value.pass  { color: var(--pass); }
+  .stat-value.fail  { color: var(--fail); }
+  .stat-value.warn  { color: var(--warn); }
+  .stat-value.total { color: var(--accent); }
+  .stat-value.files { color: var(--accent2); }
+
+  /* ── Progress Bar ── */
+  .progress-section { margin-bottom: 2rem; }
+  .progress-label { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--muted); }
+  .progress-bar { height: 10px; background: var(--surface); border-radius: 9999px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 9999px; transition: width 1s ease;
+    background: linear-gradient(90deg, var(--pass), var(--accent2)); }
+
+  /* ── Section Titles ── */
+  .section-title {
+    font-size: 1.1rem; font-weight: 700; color: var(--text);
+    margin: 2.5rem 0 1rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── File Cards ── */
+  .file-grid { display: flex; flex-direction: column; gap: 1rem; }
+  .file-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .file-card-header {
+    padding: 1rem 1.25rem; display: flex; align-items: center; gap: 0.75rem;
+    cursor: pointer; user-select: none;
+    border-bottom: 1px solid transparent;
+    transition: background 0.15s;
+  }
+  .file-card-header:hover { background: rgba(124,106,247,0.07); }
+  .file-card-header.expanded { border-bottom-color: var(--border); }
+  .file-badge {
+    padding: 0.2rem 0.65rem; border-radius: 9999px; font-size: 0.7rem;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .badge-pass  { background: rgba(74,222,128,0.15); color: var(--pass); }
+  .badge-fail  { background: rgba(248,113,113,0.15); color: var(--fail); }
+  .badge-error { background: rgba(251,191,36,0.15);  color: var(--warn); }
+  .file-path { font-size: 0.9rem; font-family: monospace; color: var(--accent2); flex: 1; }
+  .file-counts { font-size: 0.8rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
+  .chevron { transition: transform 0.2s; color: var(--muted); }
+  .chevron.open { transform: rotate(180deg); }
+  .file-card-body { padding: 1.25rem; display: none; }
+  .file-card-body.visible { display: block; }
+
+  /* ── Test Items ── */
+  .test-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .test-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.75rem 1rem; border-radius: 8px;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .test-icon { font-size: 1rem; margin-top: 1px; flex-shrink: 0; }
+  .test-name { font-size: 0.85rem; font-family: monospace; color: var(--text); flex: 1; }
+  .test-detail { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
+  .test-error {
+    margin-top: 0.5rem; padding: 0.6rem 0.8rem;
+    background: var(--code-bg); border-left: 3px solid var(--fail);
+    border-radius: 4px; font-family: monospace; font-size: 0.75rem;
+    color: #fca5a5; white-space: pre-wrap; word-break: break-all;
+    max-height: 150px; overflow-y: auto;
+  }
+
+  /* ── Analysis & Suggestions ── */
+  .analysis-grid { display: flex; flex-direction: column; gap: 1rem; }
+  .analysis-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.25rem 1.5rem;
+  }
+  .analysis-card h3 { font-size: 0.9rem; color: var(--accent); margin-bottom: 0.5rem; font-family: monospace; }
+  .analysis-card .root-cause { color: var(--text); font-size: 0.88rem; margin-bottom: 0.75rem; }
+  .severity-badge {
+    display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  }
+  .sev-high   { background: rgba(248,113,113,0.2); color: var(--fail); }
+  .sev-medium { background: rgba(251,191,36,0.2);  color: var(--warn); }
+  .sev-low    { background: rgba(74,222,128,0.2);  color: var(--pass); }
+
+  /* ── Code Suggestions ── */
+  .suggestion-block { margin-top: 0.75rem; }
+  .suggestion-block h4 { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  pre.diff {
+    background: var(--code-bg); border-radius: 6px; padding: 0.75rem;
+    font-size: 0.75rem; overflow-x: auto; white-space: pre; border: 1px solid var(--border);
+  }
+  pre.diff .add  { color: var(--pass); }
+  pre.diff .rem  { color: var(--fail); }
+  pre.diff .ctx  { color: var(--muted); }
+
+  /* ── Empty State ── */
+  .empty-state { text-align: center; padding: 3rem; color: var(--muted); }
+  .empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--border); padding: 1.5rem 2.5rem;
+    text-align: center; color: var(--muted); font-size: 0.78rem;
+    margin-top: 3rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- ── Header ── -->
+<div class="header">
+  <span class="header-icon">🧪</span>
+  <div>
+    <h1>AI <span>Regression</span> Test Report</h1>
+    <div style="color:var(--muted);font-size:0.82rem;">Powered by Ollama · phi3</div>
+  </div>
+  <div class="header-meta">
+    <strong>/Users/venkey/Documents/svr/major_project/sachin/sample_project</strong>
+    Generated 2026-07-28 10:37:20
+  </div>
+</div>
+
+<!-- ── Main ── -->
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Total Tests</span>
+      <span class="stat-value total">53</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Passed</span>
+      <span class="stat-value pass">43</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Failed</span>
+      <span class="stat-value fail">10</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Errors</span>
+      <span class="stat-value warn">0</span>
+      <span class="stat-value warn">0</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Files Tested</span>
+      <span class="stat-value files">6</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Pass Rate</span>
+      <span class="stat-value" style="color:var(--accent2)">81.1%</span>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-section">
+    <div class="progress-label">
+      <span>Test Pass Rate</span>
+      <span>43 / 53 tests passing</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" style="width:81.1%"></div>
+    </div>
+  </div>
+
+  <!-- Per-file Results -->
+  <div class="section-title">📁 Test Results by File</div>
+  <div class="file-grid">
+    
+      
+      <div class="file-card">
+        <div class="file-card-header" onclick="toggleCard(this)">
+          <span class="file-badge badge-pass">pass</span>
+          <span class="file-path">calculator.py</span>
+          <span class="file-counts">20✅ 0❌ 0⚠️</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="file-card-body">
+          <div class="test-list">
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_arithmetic_operations_and_history</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_division_by_zero_raises_valueerror</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_percentage_error_handling[50.0-0.0-ValueError]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_percentage_error_handling[a-10.0-TypeError]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_percentage_error_handling[50.0-None-TypeError]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_percentage_error_handling[None-10.0-TypeError]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_percentage_valid_case</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[2-True]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[3-True]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[17-True]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[4-False]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[9-False]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[0-False]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[1-False]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_valid_integers[-5-False]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_type_checking[-1.0]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_type_checking[3.14]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_type_checking[abc]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_type_checking[None]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_prime_complex_type_checking[value0-TypeError]</div>
+                
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="file-card">
+        <div class="file-card-header" onclick="toggleCard(this)">
+          <span class="file-badge badge-fail">fail</span>
+          <span class="file-path">string_utils.py</span>
+          <span class="file-counts">16✅ 5❌ 0⚠️</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="file-card-body">
+          <div class="test-list">
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_type_errors_in_core_functions[reverse_string-non_str_input0]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_type_errors_in_core_functions[count_words-123]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_type_errors_in_core_functions[reverse_string-None]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_truncate_value_errors[A long text-2]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_truncate_value_errors[Test--1]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_reverse_happy_path</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_reverse_empty_edge_case</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_count_words_edge_cases[-0]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_count_words_edge_cases[one two three-3]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_count_words_edge_cases[Multiple   spaces  here-3]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_truncate_functionality[Hello world!-3-Hello-world]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_truncate_functionality[This text is very long and needs shortening-5-This...]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_truncate_functionality[Short-10-Short]</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_extract_emails_mixed_data</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_slug_conversion_mixed_data</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_is_palindrome_mixed_data</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_title_case_standard</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_string_utils_py.py:139: in test_title_case_standard
+    assert title_case(&#34;a quick brown fox&#34;) == &#34;Quick Brown Fox&#34;
+E   AssertionError: assert &#39;A Quick Brown Fox&#39; == &#39;Quick Brown Fox&#39;
+E     
+E     - Quick Brown Fox
+E     + A Quick Brown Fox
+E     ? ++</div>
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;The Dog and ... by the River&#39; == &#39;Dog And The ... By The River&#39;
+E     
+E     - Dog And The Cat Ran By The River
+E     ?     ^   ^           ^  ^
+E     + The Dog and the Cat Ran by the River
+E     ? ++++    ^   ^           ^  ^</div>
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;An Apple to Eat With a Fork&#39; == &#39;Apple To Eat With A Fork&#39;
+E     
+E     - Apple To Eat With A Fork
+E     ?       ^           ^
+E     + An Apple to Eat With a Fork
+E     ? +++      ^           ^</div>
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;A Test for and but or or Us&#39; == &#39;Test For And But Or Us&#39;
+E     
+E     - Test For And But Or Us
+E     + A Test for and but or or Us</div>
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;The Cat Sat on an Mat&#39; == &#39;The Cat Sat On An Mat&#39;
+E     
+E     - The Cat Sat On An Mat
+E     ?             ^  ^
+E     + The Cat Sat on an Mat
+E     ?             ^  ^</div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="file-card">
+        <div class="file-card-header" onclick="toggleCard(this)">
+          <span class="file-badge badge-pass">pass</span>
+          <span class="file-path">t -0]</span>
+          <span class="file-counts">1✅ 0❌ 0⚠️</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="file-card-body">
+          <div class="test-list">
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">test_count_words_edge_cases[   \t -0]</div>
+                
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="file-card">
+        <div class="file-card-header" onclick="toggleCard(this)">
+          <span class="file-badge badge-fail">fail</span>
+          <span class="file-path">user_manager.py</span>
+          <span class="file-counts">0✅ 3❌ 0⚠️</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="file-card-body">
+          <div class="test-list">
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_role_access_control</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_user_manager_py.py:35: in test_role_access_control
+    admin = get_user(&#34;admin&#34;)
+            ^^^^^^^^^^^^^^^^^
+output/generated_tests/test_user_manager_py.py:29: in get_user
+    return User(id=id, username=f&#34;u{id}&#34;, email=f&#34;{role}@test.com&#34;, role=role)
+           ^^^^
+E   NameError: name &#39;User&#39; is not defined</div>
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_create_user_validation_failures</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_user_manager_py.py:92: in test_create_user_validation_failures
+    with pytest.raises(UserValidationError, match=&#34;Username &#39;testuser&#39; is already taken&#34;):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: Regex pattern did not match.
+E     Expected regex: &#34;Username &#39;testuser&#39; is already taken&#34;
+E     Actual message: &#34;Username &#39;TESTUSER&#39; is already taken&#34;</div>
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">test_full_crud_lifecycle</div>
+                
+                
+                <div class="test-error">output/generated_tests/test_user_manager_py.py:125: in test_full_crud_lifecycle
+    retrieved_user = manager.get_user(test_username)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+user_manager.py:126: in get_user
+    raise UserNotFoundError(f&#34;No user with ID {user_id}&#34;)
+E   user_manager.UserNotFoundError: No user with ID cruduser</div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="file-card">
+        <div class="file-card-header" onclick="toggleCard(this)">
+          <span class="file-badge badge-fail">fail</span>
+          <span class="file-path"></span>
+          <span class="file-counts">6✅ 2❌ 0⚠️</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="file-card-body">
+          <div class="test-list">
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">TestBasicArithmeticOperations</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">TestDivideByZero</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">TestFactorialNegativeInput</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">❌</span>
+              <div style="flex:1">
+                <div class="test-name">TestClampFunctionality</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">java_test_0</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">java_test_1</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">java_test_2</div>
+                
+                
+              </div>
+            </div>
+            
+            <div class="test-item">
+              <span class="test-icon">✅</span>
+              <div style="flex:1">
+                <div class="test-name">java_test_3</div>
+                
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    
+  </div>
+
+  <!-- Failure Analysis -->
+  <div class="section-title">🔍 AI Failure Analysis</div>
+  <div class="analysis-grid">
+    
+      
+      <div class="analysis-card">
+        <h3>test_title_case_standard</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">string_utils.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_string_utils_py.py:139: in test_title_case_standard
+    assert title_case(&#34;a quick brown fox&#34;) == &#34;Quick Brown Fox&#34;
+E   AssertionError: assert &#39;A Quick Brown Fox&#39; == &#39;Quick</div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">string_utils.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;The Dog and ... by the River&#39; ==</div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">string_utils.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;An Apple to Eat With a Fork&#39; == </div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">string_utils.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;A Test for and but or or Us&#39; == </div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">string_utils.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions
+    assert title_case(input_text) == expected_output
+E   AssertionError: assert &#39;The Cat Sat on an Mat&#39; == &#39;The C</div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_role_access_control</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">user_manager.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_user_manager_py.py:35: in test_role_access_control
+    admin = get_user(&#34;admin&#34;)
+            ^^^^^^^^^^^^^^^^^
+output/generated_tests/test_user_manager_py.py:29: in get_use</div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_create_user_validation_failures</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">user_manager.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_user_manager_py.py:92: in test_create_user_validation_failures
+    with pytest.raises(UserValidationError, match=&#34;Username &#39;testuser&#39; is already taken&#34;):
+         ^^^^^^^^^</div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>test_full_crud_lifecycle</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)">user_manager.py</code></span>
+        </div>
+        <div class="root-cause">Test failed with: output/generated_tests/test_user_manager_py.py:125: in test_full_crud_lifecycle
+    retrieved_user = manager.get_user(test_username)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+user_manager.p</div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>TestBasicArithmeticOperations</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)"></code></span>
+        </div>
+        <div class="root-cause">Test failed with: </div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+      <div class="analysis-card">
+        <h3>TestClampFunctionality</h3>
+        <div style="margin-bottom:0.5rem">
+          <span class="severity-badge sev-medium">medium severity</span>
+          &nbsp;
+          <span style="font-size:0.8rem;color:var(--muted)">Source: <code style="color:var(--accent2)"></code></span>
+        </div>
+        <div class="root-cause">Test failed with: </div>
+        
+        <div class="suggestion-block">
+          <h4>💡 Suggested Fix</h4>
+          <pre class="diff">Review the source function for incorrect logic or missing error handling.</pre>
+        </div>
+        
+      </div>
+      
+    
+  </div>
+
+  <!-- Code Suggestions Summary -->
+  
+  <div class="section-title">🛠️ Code Improvement Suggestions</div>
+  <div class="analysis-grid">
+    
+    <div class="analysis-card">
+      <h3>string_utils.py</h3>
+      <div class="root-cause" style="white-space:pre-wrap"></div>
+    </div>
+    
+    <div class="analysis-card">
+      <h3>user_manager.py</h3>
+      <div class="root-cause" style="white-space:pre-wrap"></div>
+    </div>
+    
+    <div class="analysis-card">
+      <h3></h3>
+      <div class="root-cause" style="white-space:pre-wrap">As a senior engineer, I&#39;ve reviewed the code against the failure hints (Arithmetic and Clamping), even though these tests seem generic. The most likely place for bounds-related errors is in functions that accept IDs (`get_user`, `update_email`, `delete_user`). While Python handles negative indices gracefully, user identifiers are expected to be positive integers (1 or greater).
+
+Here are the required fixes:
+
+---
+ISSUE: Missing validation for User IDs (Bounds Check/Arithmetic Constraint Violation)
+The methods that retrieve users by ID (`get_user`, `update_email`, `delete_user`) do not validate if the provided `user_id` is a positive integer. If a user passes 0 or a negative number, the function operates without error but violates expected business logic constraints for IDs.
+BEFORE:
+```python
+    def get_user(self, user_id: int) -&gt; User:
+        &#34;&#34;&#34;
+        Retrieve a user by ID.
+
+        Raises:
+            UserNotFoundError: If no user with that ID exists
+        &#34;&#34;&#34;
+        if user_id not in self._users:
+            raise UserNotFoundError(f&#34;No user with ID {user_id}&#34;)
+        return self._users[user_id]
+```
+AFTER:
+```python
+    def get_user(self, user_id: int) -&gt; User:
+        &#34;&#34;&#34;
+        Retrieve a user by ID.
+
+        Raises:
+            UserNotFoundError: If no user with that ID exists
+            ValueError: If the user_id is not a positive integer
+        &#34;&#34;&#34;
+        if not isinstance(user_id, int) or user_id &lt;= 0:
+             raise ValueError(&#34;User ID must be a positive integer.&#34;)
+
+        if user_id not in self._users:
+            raise UserNotFoundError(f&#34;No user with ID {user_id}&#34;)
+        return self._users[user_id]
+```
+REASON: Although the existing code handles non-existent IDs via `UserNotFoundError`, it fails to enforce the fundamental business rule that user IDs must be positive integers. This validates the input boundary, addressing potential &#34;arithmetic&#34; or bounds failures indicated by the test suite.
+
+---
+ISSUE: Missing validation for User IDs (Bounds Check/Arithmetic Constraint Violation)</div>
+    </div>
+    
+  </div>
+  
+
+</div>
+
+<footer>
+  Generated by <strong>AI Regression Testing Framework</strong> ·
+  Model: <a href="#">gemma4</a> ·
+  2026-07-28 10:37:20
+</footer>
+
+<script>
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  const isOpen = body.classList.contains('visible');
+  body.classList.toggle('visible', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  header.classList.toggle('expanded', !isOpen);
+}
+// Auto-expand first failing card
+document.addEventListener('DOMContentLoaded', () => {
+  const first = document.querySelector('.badge-fail');
+  if (first) first.closest('.file-card-header').click();
+});
+</script>
+</body>
+</html>

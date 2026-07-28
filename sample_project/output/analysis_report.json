@@ -1,0 +1,94 @@
+{
+  "total_tests": 53,
+  "passed": 43,
+  "failed": 10,
+  "errors": 0,
+  "pass_rate": 81.1,
+  "failures": [
+    {
+      "test_name": "test_title_case_standard",
+      "source_file": "string_utils.py",
+      "root_cause": "Test failed with: output/generated_tests/test_string_utils_py.py:139: in test_title_case_standard\n    assert title_case(\"a quick brown fox\") == \"Quick Brown Fox\"\nE   AssertionError: assert 'A Quick Brown Fox' == 'Quick",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_title_case_with_exceptions[the dog and the cat ran by the river-Dog And The Cat Ran By The River]",
+      "source_file": "string_utils.py",
+      "root_cause": "Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'The Dog and ... by the River' ==",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_title_case_with_exceptions[an apple to eat with a fork-Apple To Eat With A Fork]",
+      "source_file": "string_utils.py",
+      "root_cause": "Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'An Apple to Eat With a Fork' == ",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_title_case_with_exceptions[a test for AND but or OR us-Test For And But Or Us]",
+      "source_file": "string_utils.py",
+      "root_cause": "Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'A Test for and but or or Us' == ",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_title_case_with_exceptions[the cat sat on an mat-The Cat Sat On An Mat]",
+      "source_file": "string_utils.py",
+      "root_cause": "Test failed with: output/generated_tests/test_string_utils_py.py:156: in test_title_case_with_exceptions\n    assert title_case(input_text) == expected_output\nE   AssertionError: assert 'The Cat Sat on an Mat' == 'The C",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_role_access_control",
+      "source_file": "user_manager.py",
+      "root_cause": "Test failed with: output/generated_tests/test_user_manager_py.py:35: in test_role_access_control\n    admin = get_user(\"admin\")\n            ^^^^^^^^^^^^^^^^^\noutput/generated_tests/test_user_manager_py.py:29: in get_use",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_create_user_validation_failures",
+      "source_file": "user_manager.py",
+      "root_cause": "Test failed with: output/generated_tests/test_user_manager_py.py:92: in test_create_user_validation_failures\n    with pytest.raises(UserValidationError, match=\"Username 'testuser' is already taken\"):\n         ^^^^^^^^^",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "test_full_crud_lifecycle",
+      "source_file": "user_manager.py",
+      "root_cause": "Test failed with: output/generated_tests/test_user_manager_py.py:125: in test_full_crud_lifecycle\n    retrieved_user = manager.get_user(test_username)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nuser_manager.p",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "TestBasicArithmeticOperations",
+      "source_file": "",
+      "root_cause": "Test failed with: ",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    },
+    {
+      "test_name": "TestClampFunctionality",
+      "source_file": "",
+      "root_cause": "Test failed with: ",
+      "severity": "medium",
+      "suggestion": "Review the source function for incorrect logic or missing error handling."
+    }
+  ],
+  "raw_output_path": "/Users/venkey/Documents/svr/major_project/sachin/sample_project/output/pytest_raw.txt",
+  "code_suggestions": [
+    {
+      "source_file": "string_utils.py",
+      "suggestion_text": ""
+    },
+    {
+      "source_file": "user_manager.py",
+      "suggestion_text": ""
+    },
+    {
+      "source_file": "",
+      "suggestion_text": "As a senior engineer, I've reviewed the code against the failure hints (Arithmetic and Clamping), even though these tests seem generic. The most likely place for bounds-related errors is in functions that accept IDs (`get_user`, `update_email`, `delete_user`). While Python handles negative indices gracefully, user identifiers are expected to be positive integers (1 or greater).\n\nHere are the required fixes:\n\n---\nISSUE: Missing validation for User IDs (Bounds Check/Arithmetic Constraint Violation)\nThe methods that retrieve users by ID (`get_user`, `update_email`, `delete_user`) do not validate if the provided `user_id` is a positive integer. If a user passes 0 or a negative number, the function operates without error but violates expected business logic constraints for IDs.\nBEFORE:\n```python\n    def get_user(self, user_id: int) -> User:\n        \"\"\"\n        Retrieve a user by ID.\n\n        Raises:\n            UserNotFoundError: If no user with that ID exists\n        \"\"\"\n        if user_id not in self._users:\n            raise UserNotFoundError(f\"No user with ID {user_id}\")\n        return self._users[user_id]\n```\nAFTER:\n```python\n    def get_user(self, user_id: int) -> User:\n        \"\"\"\n        Retrieve a user by ID.\n\n        Raises:\n            UserNotFoundError: If no user with that ID exists\n            ValueError: If the user_id is not a positive integer\n        \"\"\"\n        if not isinstance(user_id, int) or user_id <= 0:\n             raise ValueError(\"User ID must be a positive integer.\")\n\n        if user_id not in self._users:\n            raise UserNotFoundError(f\"No user with ID {user_id}\")\n        return self._users[user_id]\n```\nREASON: Although the existing code handles non-existent IDs via `UserNotFoundError`, it fails to enforce the fundamental business rule that user IDs must be positive integers. This validates the input boundary, addressing potential \"arithmetic\" or bounds failures indicated by the test suite.\n\n---\nISSUE: Missing validation for User IDs (Bounds Check/Arithmetic Constraint Violation)"
+    }
+  ]
+}
